@@ -31,7 +31,8 @@ namespace SearchApp.Controllers
             var queryanalizer = new MultiFieldQueryParser(fieldsToSearchIn,
                                                           new StandardAnalyzer());
 
-            var top10Results = searcher.Search(queryanalizer.Parse(query), 10);
+            var numberOfResults = 10;
+            var top10Results = searcher.Search(queryanalizer.Parse(query), numberOfResults);
             
             return View("Index");
         }
