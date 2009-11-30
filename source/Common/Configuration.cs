@@ -2,13 +2,12 @@
 {
     public class Configuration
     {
-        public string FilesDirectory { get; private set; }
-        public string IndexDirectory { get; protected set; }
-
-        public Configuration()
+        public static string FilesDirectory = @"F:\ptwiki-latest-pages-articles.xml\files";
+        public static string IndexDirectory = @"F:\ptwiki-latest-pages-articles.xml\index";
+        public class Fields
         {
-            FilesDirectory = @"F:\ptwiki-latest-pages-articles.xml\files";
-            IndexDirectory = @"F:\ptwiki-latest-pages-articles.xml\index";
+            public static string Title = "title";
+            public static string Text = "text";
         }
     }
 }
