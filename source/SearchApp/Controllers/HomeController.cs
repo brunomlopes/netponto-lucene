@@ -1,4 +1,8 @@
 ﻿using System.Web.Mvc;
+using Common;
+using Lucene.Net.Analysis.Standard;
+using Lucene.Net.QueryParsers;
+using Lucene.Net.Search;
 
 namespace SearchApp.Controllers
 {
@@ -19,9 +23,17 @@ namespace SearchApp.Controllers
 
         public ActionResult Search(string query)
         {
-            ViewData["Message"] = "query : "+query;
+            ViewData["Message"] = "query : " + query;
+
+            var searcher = new IndexSearcher(Configuration.IndexDirectory);
+
+            var fieldsToSearchIn = new[] {Configuration.Fields.Title, Configuration.Fields.Text};
+            var queryanalizer = new MultiFieldQueryParser(fieldsToSearchIn,
+                                                          new StandardAnalyzer());
+
+            var top10Results = searcher.Search(queryanalizer.Parse(query), 10);
+            
             return View("Index");
         }
-
     }
 }
