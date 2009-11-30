@@ -4,11 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexer", "Indexer\Indexer.csproj", "{941EC8A9-8EF3-4B56-9BB4-814F66476E5D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BDDEFB8D-2339-4EA3-9DE9-42BC91CB9FDB}"
-	ProjectSection(SolutionItems) = preProject
-		Configuration.cs = Configuration.cs
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApp", "SearchApp\SearchApp.csproj", "{6CFB14F2-AA73-4973-835C-8DF1E18E102D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{F4B417D9-3ADA-4C8B-A060-F36DFFA89653}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +23,10 @@ Global
 		{6CFB14F2-AA73-4973-835C-8DF1E18E102D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CFB14F2-AA73-4973-835C-8DF1E18E102D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CFB14F2-AA73-4973-835C-8DF1E18E102D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B417D9-3ADA-4C8B-A060-F36DFFA89653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B417D9-3ADA-4C8B-A060-F36DFFA89653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B417D9-3ADA-4C8B-A060-F36DFFA89653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B417D9-3ADA-4C8B-A060-F36DFFA89653}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
