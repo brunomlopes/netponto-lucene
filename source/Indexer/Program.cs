@@ -44,11 +44,14 @@ namespace Indexer
                 var title = Path.GetFileNameWithoutExtension(filepath);
 
                 var titleField = new Field(Configuration.Fields.Title,
-                                           new StringReader(title));
+                                           title, 
+                                           Field.Store.YES, Field.Index.ANALYZED);
+                
                 document.Add(titleField);
 
                 var textField = new Field(Configuration.Fields.Text,
-                                          new StreamReader(filepath));
+                                          new StreamReader(filepath).ReadToEnd(),
+                                          Field.Store.YES, Field.Index.ANALYZED);
                 document.Add(textField);
 
                 indexWriter.AddDocument(document);
