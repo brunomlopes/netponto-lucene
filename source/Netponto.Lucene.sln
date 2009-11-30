@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexer", "Indexer\Indexer.csproj", "{941EC8A9-8EF3-4B56-9BB4-814F66476E5D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BDDEFB8D-2339-4EA3-9DE9-42BC91CB9FDB}"
+	ProjectSection(SolutionItems) = preProject
+		Configuration.cs = Configuration.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApp", "SearchApp\SearchApp.csproj", "{6CFB14F2-AA73-4973-835C-8DF1E18E102D}"
 EndProject
