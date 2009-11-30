@@ -1,8 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Common;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Search;
+using SearchApp.Models;
 
 namespace SearchApp.Controllers
 {
@@ -33,8 +35,19 @@ namespace SearchApp.Controllers
 
             var numberOfResults = 10;
             var top10Results = searcher.Search(queryanalizer.Parse(query), numberOfResults);
-            
-            return View("Index");
+            var docs = new List<DocumentViewModel>();
+            foreach (var scoreDoc in top10Results.scoreDocs)
+            {
+                var document = searcher.Doc(scoreDoc.doc);
+                var title = document.GetField(Configuration.Fields.Title).StringValue();
+                var text = document.GetField(Configuration.Fields.Text).StringValue();
+                docs.Add(new DocumentViewModel(title, text));
+            }
+            return View(new SearchViewModel(docs));
         }
+
+       
+
+        
     }
 }
