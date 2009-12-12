@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Web.Mvc;
 using Common;
 using Lucene.Net.Analysis.Standard;
@@ -39,15 +41,33 @@ namespace SearchApp.Controllers
             foreach (var scoreDoc in top10Results.scoreDocs)
             {
                 var document = searcher.Doc(scoreDoc.doc);
-                var title = document.GetField(Configuration.Fields.Title).StringValue();
-                var text = document.GetField(Configuration.Fields.Text).StringValue();
-                docs.Add(new DocumentViewModel(title, text));
+                var id = document.GetField(Configuration.Fields.ID).StringValue();
+                var wikiDoc = WikiDocument.FromId(id);
+               
+                docs.Add(new DocumentViewModel(wikiDoc.Title, wikiDoc.Text));
             }
             return View(new SearchViewModel(docs));
         }
 
-       
+        
+        
+        class WikiDocument
+        {
+            public string Title { get; private set; }
+            public string Text { get; private set; }
 
+            private WikiDocument(string title, string text)
+            {
+                Title = title;
+                Text = text;
+            }
+
+            public static WikiDocument FromId(string id)
+            {
+                var fileContents = System.IO.File.ReadAllText(id);
+                return new WikiDocument(Path.GetFileName(id), fileContents);
+            }
+        }
         
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Common
+﻿using System;
+
+namespace Common
 {
     public class Configuration
     {
@@ -8,6 +10,7 @@
         {
             public static string Title = "title";
             public static string Text = "text";
+            public static string ID = "id";
         }
     }
 }

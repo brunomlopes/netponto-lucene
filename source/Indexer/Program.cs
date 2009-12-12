@@ -43,15 +43,19 @@ namespace Indexer
                 var document = new Document();
                 var title = Path.GetFileNameWithoutExtension(filepath);
 
+                var idField = new Field(Configuration.Fields.ID,
+                                        filepath, Field.Store.YES, Field.Index.NO);
+                document.Add(idField);
+
                 var titleField = new Field(Configuration.Fields.Title,
                                            title, 
-                                           Field.Store.YES, Field.Index.ANALYZED);
+                                           Field.Store.NO, Field.Index.ANALYZED);
                 
                 document.Add(titleField);
 
                 var textField = new Field(Configuration.Fields.Text,
                                           new StreamReader(filepath).ReadToEnd(),
-                                          Field.Store.YES, Field.Index.ANALYZED);
+                                          Field.Store.NO, Field.Index.ANALYZED);
                 document.Add(textField);
 
                 indexWriter.AddDocument(document);
