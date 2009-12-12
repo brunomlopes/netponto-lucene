@@ -48,14 +48,14 @@ namespace Indexer
                 document.Add(idField);
 
                 var titleField = new Field(Configuration.Fields.Title,
-                                           title, 
-                                           Field.Store.NO, Field.Index.ANALYZED);
+                                           title,
+                                           Field.Store.COMPRESS, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
                 
                 document.Add(titleField);
 
                 var textField = new Field(Configuration.Fields.Text,
                                           new StreamReader(filepath).ReadToEnd(),
-                                          Field.Store.NO, Field.Index.ANALYZED);
+                                          Field.Store.COMPRESS, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS);
                 document.Add(textField);
 
                 indexWriter.AddDocument(document);
